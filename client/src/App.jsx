@@ -7,7 +7,8 @@ import Home from './Pages/Home.page';
 import { Product } from './Pages/Product/Product.page';
 import { CreateProduct } from './Pages/Product/CreateProduct.page';
 import { Brand } from './Pages/Brand/Brand.page';
-import { LoginPage } from './Pages/LoginPage.page';
+import { Login } from './Pages/Login/Login.page';
+import { Signin } from './Pages/Signin/Signin.page';
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
             <Route path="/" element={<Home />} />        
             <Route path="/Product" element={<Product />} />
             <Route path="/brand" element={<Brand />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signin" element={<Signin />} />
             <Route path="product/createproduct" element={<CreateProduct />} />
             <Route path="product/editproduct" element={<CreateProduct />} />
           </Routes>
