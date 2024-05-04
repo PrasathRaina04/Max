@@ -22,7 +22,7 @@ export function Header()
                         <li className="nav-item"><a className="nav-link" href="/category">Category</a></li>     
                         <li className="nav-item"><a className="nav-link" href="/bill">Bill</a></li>
                         <li className="nav-item"><a className="nav-link" href="/login">Login</a></li>
-                        <li className="nav-item"><a className="nav-link" href="/signup">Sign Up</a></li>
+                        <li className="nav-item"><a className="nav-link" href="/signin">Sign Up</a></li>
                     </ul>
                 </div>
             </div>
