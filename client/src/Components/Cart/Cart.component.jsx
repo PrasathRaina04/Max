@@ -9,14 +9,14 @@ useEffect(() => {
 },[props.cartItems])
 function handleRemoveCart(items)
 {
-    const temp = selectedItems.filter((product) => product.productName !== items.productName)
+    const temp = selectedItems.filter((product) => product !== items)
     setSelectedItems(temp);
 }
 function handleTotal()
 {
     let total=0
     selectedItems.map((product)=>{
-        total=total + (product.productQty*product.productPrice);
+        total=total + (product.productQty*(product.productPrice));
     }
 )
 return total

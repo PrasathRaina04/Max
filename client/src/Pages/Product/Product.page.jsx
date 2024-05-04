@@ -15,54 +15,42 @@ export function Product() {
     const [showCart, setShowCart]=  useState(false)
     const[productQTY, setProductQTY]=useState(1)
     const[quantity, setQuantity]=useState({})
-    const[price, setPrice]=useState('')
 
-function handleQty(item,e)
-{
-    setProductQTY(e.target.value)
-   productList.map((product)=>{
-    if(product.productID===item.productID)
+    function handleQty(item,e)
     {
-product.productQty=e.target.value;
-return product
-    }
-   }
-
-)
-}
-
-function handleQuantity(item, e)
-{
-//     setQuantity(e.target.value)
-//     productList.map((product)=>{
-//     if(product.productID===item.productID)
-//     {
-//         product.productKgs= e.target.value;
-//         return product;
-//     }
-// })
-    const updatedProductList = productList.map((product) => {
-        if (product.productID === item.productID) {
-            return {
-                ...product,
-                productKgs: e.target.value
-            };
-        } else {
-            return product;
+        setProductQTY(e.target.value)
+       productList.map((product)=>{
+        if(product.productID===item.productID)
+        {
+    product.productQty=e.target.value;
+    return product
         }
-    });
-
-    setProductList(updatedProductList); 
-}
-
-//// Cart function
+       }
+    
+    )
+    }
+    
+    function handleQuantity(item,e)
+    {
+    setQuantity(e.target.value)
+        productList.map((product) => {
+            if (product.productID === item.productID) {
+                    product.productKgs= e.target.value;
+                return product;
+            }
+        });
+    
+    }
+    
+    //// Cart function
 
     const handleCart = (items) => {
+        let tempPrice=items.productPrice*handleProductKgs(items.productKgs)
         const addItems = {
             productName: items.productName,
-            productQty: productQTY,
-         
-            productPrice: items.productPrice
+            productQty: items.productQty,
+            productKgs: items.productKgs,
+            productPrice: tempPrice
         }
         setSelectedProduct([...selectedProduct, addItems])
         setShowCart(true)
@@ -84,6 +72,16 @@ function handleQuantity(item, e)
     useEffect(() => {
         fetchProductDetails();
     }, [setProductList])
+    function handleProductKgs(productKgs){
+        switch(productKgs){
+            case "250 g":
+                return 1;
+            case "500 g":
+                return 2;
+            case "1 kg":
+                return 4;
+        }
+    }
 
 //// Edit Button function
 
@@ -104,7 +102,7 @@ function handleQuantity(item, e)
             productID: 1,
             productName: "Beens",
             productNameTn: "பீன்ஸ்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 25,
 
@@ -113,7 +111,7 @@ function handleQuantity(item, e)
             productID: 2,
             productName: "Butter",
             productNameTn: "வெண்ணெய்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 50,
         },
@@ -121,7 +119,7 @@ function handleQuantity(item, e)
             productID: 3,
             productName: "Dried Fruits",
             productNameTn: "உலர்ந்த பழங்கள்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 125,
         },
@@ -129,7 +127,7 @@ function handleQuantity(item, e)
             productID: 4,
             productName: "Pasta",
             productNameTn: "பாஸ்தா",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 80,
         },
@@ -137,7 +135,7 @@ function handleQuantity(item, e)
             productID: 5,
             productName: "Biryani Rice",
             productNameTn: "பிரியாணி சாதம்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 75,
         },
@@ -145,7 +143,7 @@ function handleQuantity(item, e)
             productID: 6,
             productName: "Red chilli powder",
             productNameTn: "சிவப்பு மிளகாய் தூள்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 15,
         },
@@ -153,7 +151,7 @@ function handleQuantity(item, e)
             productID: 7,
             productName: "Sambar powder",
             productNameTn: "சாம்பார் பொடி",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 10,
 
@@ -162,7 +160,7 @@ function handleQuantity(item, e)
             productID: 8,
             productName: "Pepper",
             productNameTn: "மிளகு",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 45,
         },
@@ -170,7 +168,7 @@ function handleQuantity(item, e)
             productID: 9,
             productName: "Ragi flour",
             productNameTn: "ராகி மாவு",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 75,
         },
@@ -178,7 +176,7 @@ function handleQuantity(item, e)
             productID: 10,
             productName: "Noodles",
             productNameTn: "நூடுல்ஸ்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 40,
         }, 
@@ -186,7 +184,7 @@ function handleQuantity(item, e)
             productID: 11,
             productName: "Tea powder",
             productNameTn: "தேயிலை தூள்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 120,
         },
@@ -194,7 +192,7 @@ function handleQuantity(item, e)
             productID: 12,
             productName: "Sugar",
             productNameTn: "சர்க்கரை",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 30,
         },
@@ -202,7 +200,7 @@ function handleQuantity(item, e)
             productID: 13,
             productName: "Baking powder",
             productNameTn: "பேக்கிங் பவுடர்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 65,
         },
@@ -210,7 +208,7 @@ function handleQuantity(item, e)
             productID: 14,
             productName: "Almonds",
             productNameTn: "பாதாம்",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 250,
         },
@@ -218,7 +216,7 @@ function handleQuantity(item, e)
             productID: 15,
             productName: "Dates",
             productNameTn: "பேரிச்சை",
-            productKgs:{quantity},
+            productKgs:"250 g",
             productQty:1,
             productPrice: 200,
         },
@@ -251,13 +249,13 @@ function handleQuantity(item, e)
                                     </div>
                                     <br />
                                     <div className="col align-self-center">
-                                        <select value={quantity} onChange={(e)=>handleQuantity(e)}>
-                                        <option value="250 g" selected>250 g</option>
+                                    <select  onChange={(e)=>handleQuantity(item,e)}>
+                                        <option value="250 g" >250 g</option>
                                             <option  value="500 g" >500 g</option>
                                             <option  value="1 kg" >1 kg</option>
                                         </select>
                                         </div>
-                                        <h4 className="card-title">Rs.{item.productPrice}</h4>
+                                        <h4 className="card-title">Rs.{item.productPrice*handleProductKgs(item.productKgs)}</h4>
 
                                 </div>
 
