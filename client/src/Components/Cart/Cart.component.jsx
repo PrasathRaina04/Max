@@ -61,9 +61,11 @@ return total
                         
                         </tbody>
                     </table>
+                    <button className="btn btn-success" type="button" onClick={()=>{props.setShowCart(false);props.setShowContactModel(true)}}>Place Order</button>
                 </div>
             </div>
         </div>
+       
         </>
     )
 }
